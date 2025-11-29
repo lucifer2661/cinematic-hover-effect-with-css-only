@@ -17,14 +17,14 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 60px; /* space between boxes */
+    gap: 60px; 
 }
 
-/* BLACK BOXES */
+
 .box{
     height: 120px;
     width: 120px;
-    background: #111; /* slightly lighter black to see the boxes */
+    background: #111; 
     border-radius: 16px;
     cursor: pointer;
     position: relative;
@@ -36,7 +36,7 @@ body{
 .box:hover{
     anchor-name: --active-box;
     transform: scale(1.05);
-    background: #222; /* subtle hover brightness */
+    background: #222; 
 }
 
 
@@ -67,7 +67,43 @@ body{
     pointer-events: none;
 }
 
-/* Fade in overlay on hover */
+
 body:has(.box:hover) .bg-overlay{
     opacity: 1;
-} make it non ai code 
+} 
+
+
+@media (max-width: 768px) {
+
+    body{
+        flex-direction: column;
+        gap: 20px;
+        padding-top: 40px;
+    }
+
+    .box{
+        width: 120px;
+        height: 120px;
+    }
+
+    
+    .bg-overlay{
+        width: 1200px;
+        height: 1200px;
+        filter: blur(120px);
+    }
+}
+
+@media (max-width: 480px) {
+
+    .box{
+        width: 100px;
+        height: 100px;
+    }
+
+    .bg-overlay{
+        width: 900px;
+        height: 900px;
+        filter: blur(100px);
+    }
+}
