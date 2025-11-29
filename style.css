@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+    background: #000;
+    overflow: hidden;
+
+    anchor-name: --active-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px; /* space between boxes */
+}
+
+/* BLACK BOXES */
+.box{
+    height: 120px;
+    width: 120px;
+    background: #111; /* slightly lighter black to see the boxes */
+    border-radius: 16px;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    anchor-name: --box;
+    transition: transform 0.4s ease, background 0.4s ease;
+}
+
+.box:hover{
+    anchor-name: --active-box;
+    transform: scale(1.05);
+    background: #222; /* subtle hover brightness */
+}
+
+
+.bg-overlay{
+    position: absolute;
+    z-index: 1;
+
+    position-anchor: --active-box;
+    top: anchor(center);
+    left: anchor(center);
+
+    width: 1000px; 
+    height: 1000px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(circle at center, rgba(120,120,120,0.5), rgba(0,0,0,0.8)),
+        radial-gradient(circle at center, rgba(200,200,200,0.2), transparent 60%);
+
+    filter: blur(100px) saturate(120%);
+    opacity: 0;
+
+    transition:
+        opacity 2s ease-in-out,
+        top 1.2s cubic-bezier(0.16,1,0.3,1),
+        left 1.2s cubic-bezier(0.16,1,0.3,1);
+    pointer-events: none;
+}
+
+/* Fade in overlay on hover */
+body:has(.box:hover) .bg-overlay{
+    opacity: 1;
+} make it non ai code 
